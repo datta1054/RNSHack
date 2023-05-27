@@ -12,10 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "crypto-js": "^4.1.1",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.0",
     "mysql": "^2.18.1",
+    "node-mailjet": "^6.0.2",
     "uuid": "^9.0.0"
   }
 }
