@@ -2,24 +2,27 @@ import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import styles from "./PieChart.module.css"; // Import the CSS module
 
-const PieChart = () => {
+const PieChart = (props) => {
   const chartRef = useRef(null);
-
+  console.log(props.data);
   useEffect(() => {
     const ctx = chartRef.current.getContext("2d");
 
     const data = {
-      labels: ["Red", "Blue", "Yellow"],
+      labels: ["Food", "Travel", "Rent", "Groceries", "Bills", "Others"],
       datasets: [
         {
           label: "My First Dataset",
-          data: [300, 50, 100],
+          data: props.data,
           backgroundColor: [
-            "rgb(255, 99, 132)",
-            "rgb(54, 162, 235)",
+            "rgb(235, 107, 52)",
+            "rgb(235, 214, 52)",
+            "rgb(95, 235, 52)",
+            "rgb(52, 235, 211)",
+            "rgb(52, 58, 235)",
             "rgb(255, 205, 86)",
           ],
-          hoverOffset: 4,
+          hoverOffset: 6,
         },
       ],
     };

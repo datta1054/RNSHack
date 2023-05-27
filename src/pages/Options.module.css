@@ -1,0 +1,43 @@
+.dropdownContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dropdowns {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dropdown {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.button {
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 0.2rem 0.2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:active {
+  background-color: #3e8e41;
+}

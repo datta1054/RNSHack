@@ -19,18 +19,17 @@ function Login() {
         password: password,
       }),
     });
-    const json = await response.json();
-    console.log(json);
+    const data = await response.json();
+    console.log(data);
 
-    if (!json.success) {
+    if (response.status !== 201) {
       alert("Enter Valid Credentials");
-    }
-    if (json.success) {
-      localStorage.setItem("authToken", json.authToken);
+    } else {
+      localStorage.setItem("authToken", data.authToken);
+      console.log(data.authToken);
+      localStorage.setItem("email", email);
       console.log(localStorage.getItem("authToken"));
       alert("Successfully Logged in");
-      setemail("");
-      setpassword("");
       navigate("/");
     }
   };
@@ -62,9 +61,7 @@ function Login() {
         <button type="submit" onSubmit={handleSubmit} className={styles.button}>
           Submit
         </button>
-        <NavLink to="/forgot" className={styles.forgot}>
-          Forgot Password?
-        </NavLink>
+        <NavLink to="/forgot">Forgot password</NavLink>
       </form>
     </div>
   );

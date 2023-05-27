@@ -10,8 +10,11 @@ import Navbar from "./components/Navbar";
 import Login from "./Auth/Login";
 import Forgot from "./Auth/Forgot";
 import Signup from "./Auth/SignUp";
-import Expences from "./pages/Expences";
 import Contact from "./components/Contact";
+import Newpassword from "./Auth/Newpassword";
+import SetNewpassword from "./Auth/SetNewpassword";
+import Expenses from "./pages/Expenses";
+import Budgets from "./pages/Budgets";
 
 function App() {
   return (
@@ -21,11 +24,14 @@ function App() {
         <Routes>
           <Route path="/" Component={Home} />
           <Route path="/about" Component={About} />
-          <Route path="/expence" Component={Expences} />
           <Route path="/login" Component={Login} />
           <Route path="/contact" Component={Contact} />
           <Route path="/signup" Component={Signup} />
+          <Route path="/expenses" Component={Expenses} />
+          <Route path="/budgets" Component={Budgets} />
           <Route path="/forgot" Component={Forgot} />
+          {/* <Route path="/SetNewpassword" Component={SetNewpassword} />
+          <Route path="/Newpassword" Component={Newpassword} /> */}
           <Route path="*" Component={ErrorPage} />
         </Routes>
         <Footer />

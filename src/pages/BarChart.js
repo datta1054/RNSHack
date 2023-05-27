@@ -2,23 +2,21 @@ import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import { format, subMonths } from "date-fns";
 
-const BarChart = () => {
+const BarChart = (props) => {
   const chartRef = useRef(null);
 
   useEffect(() => {
     const ctx = chartRef.current.getContext("2d");
 
-    const startDate = subMonths(new Date(), 6); // Start date: 6 months ago
-    const labels = Array.from({ length: 7 }, (_, index) =>
-      format(subMonths(startDate, index), "MMMM")
-    );
+    const startDate = subMonths(new Date(), 6);
+    const labels = ["Food", "Travel", "Rent", "Groceries", "Bills", "Others"];
 
     const data = {
       labels: labels,
       datasets: [
         {
           label: "My First Dataset",
-          data: [65, 59, 80, 81, 56, 55, 40],
+          data: props.data,
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(255, 159, 64, 0.2)",

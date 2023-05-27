@@ -9,11 +9,14 @@ const SignUp = () => {
   const [photo, setphoto] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [otp, setOtp] = useState("");
+  const [encotp, setEncOtp] = useState("");
   const [phone, setphone] = useState();
 
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    console.log("clicked");
     e.preventDefault();
     const response = await fetch("http://localhost:8000/api/users", {
       method: "POST",
@@ -25,17 +28,42 @@ const SignUp = () => {
         email: email,
         phone: phone,
         password: password,
-        photo: photo,
       }),
     });
-    const json = await response.json();
-    console.log(json);
-    if (!json.success) {
+
+    const data = await response.json();
+    console.log(data);
+    if (response.status !== 201) {
       alert("Enter Valid Credentials");
+    } else {
+      alert("OTP Sent To Your Registed Email");
+      localStorage.setItem("email", JSON.stringify(email));
+      localStorage.setItem("token", JSON.stringify(data.token));
+      setEncOtp(data.encryptedOTP);
+      // navigate("/");
     }
-    if (json.success) {
-      alert("Successfully Signed in");
+  };
+  const handleOTP = async (e) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:8000/api/users/verify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        displayName: firstName,
+        email: email,
+        encryptedOTP: encotp,
+        otp: otp,
+        phone: phone,
+        password: password,
+      }),
+    });
+    const data = await response.json();
+    if (data.success) {
       navigate("/");
+    } else {
+      alert("Invalid OTP");
     }
   };
 
@@ -44,7 +72,7 @@ const SignUp = () => {
       <form onSubmit={handleSubmit} className={styles.form}>
         <h2 id={styles.headin}>Sign Up</h2>
         <label className={styles.label}>
-          First Name: &emsp;
+          Full Name: &emsp;
           <br />
           <input
             type="text"
@@ -52,18 +80,6 @@ const SignUp = () => {
             value={firstName}
             className={styles.input}
             onChange={(event) => setFirstName(event.target.value)}
-            required
-          />
-        </label>
-        <label className={styles.label}>
-          Last Name: &emsp;
-          <br />
-          <input
-            type="text"
-            id="lastName"
-            value={lastName}
-            className={styles.input}
-            onChange={(event) => setLastName(event.target.value)}
             required
           />
         </label>
@@ -102,26 +118,28 @@ const SignUp = () => {
           onChange={(event) => setPassword(event.target.value)}
           required
         />
+
+        <button type="submit" onClick={handleSubmit} className={styles.button}>
+          Verify Email
+        </button>
         <label className={styles.label}>
-          Photo : &emsp;
+          OTP : &emsp;
           <br />
           <input
-            type="file"
-            id="photo"
-            value={photo}
+            type="text"
+            id="otp"
+            value={otp}
             className={styles.input}
-            onChange={(event) => setphoto(event.target.value)}
+            onChange={(event) => setOtp(event.target.value)}
             required
           />
         </label>
-
-        <button type="submit" onClick={handleSubmit} className={styles.button}>
-          Submit
+        <button type="submit" onClick={handleOTP} className={styles.button}>
+          Verify otp
         </button>
         <p className={styles.login}>
-          Already have an Account?{" "}
+          Already have an Account?
           <strong>
-            {" "}
             <NavLink to="/login">Login</NavLink>
           </strong>
         </p>
