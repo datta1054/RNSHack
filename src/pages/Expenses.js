@@ -1,16 +1,13 @@
 import React from "react";
 import styles from "./Options.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ExpencesCard from "./ExpencesCard";
 
 function Expenses() {
   const [expAmount, setExpAmount] = useState(0);
   const [expType, setExpType] = useState("");
   const [expDate, setExpDate] = useState();
-  const [rexpAmount, setRExpAmount] = useState(0);
-  const [rexpType, setRExpType] = useState("");
-  const [uexpAmount, setUExpAmount] = useState(0);
-  const [uexpType, setUExpType] = useState("");
 
   const handleSubmitExpense = async (e) => {
     e.preventDefault();
@@ -32,50 +29,35 @@ function Expenses() {
     const json = await response.json();
     console.log(json);
   };
-  const handleSubmitExpenseR = async (e) => {
-    e.preventDefault();
-    const response = await fetch(
-      "http://localhost:8000/api/users/expenses/delete/",
-      {
-        method: "DELETE",
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/api/users/expenses", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: "guru@gmail.com",
-          amount: rexpAmount,
-          category: rexpType,
+          email: "s@gmail.com",
         }),
-      }
-    );
-    const json = await response.json();
-    console.log(json);
+      });
+      const jsonData = await response.json();
+      const array = jsonData.data;
+      setData(array);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
-
-  const handleSubmitExpenseU = async (e) => {
-    e.preventDefault();
-    const response = await fetch(
-      "http://localhost:8000/api/users/expenses/update/",
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: "guru@gmail.com",
-          amount: uexpAmount,
-          category: uexpType,
-        }),
-      }
-    );
-    const json = await response.json();
-    console.log(json);
-  };
-
   return (
     <div className={styles.dropdownContainer}>
+      <ExpencesCard data={data} />
+
       <div className={styles.dropdowns}>
-        <h1>Expenses</h1>
         <h3 className={styles.subtitle}>Add Expenses</h3>
         <select
           value={expType}
@@ -103,54 +85,6 @@ function Expenses() {
           value={expDate}
           className={styles.input}
           onChange={(event) => setExpDate(event.target.value)}
-        />
-        <button className={styles.button} onClick={handleSubmitExpense}>
-          Submit
-        </button>
-        <h3 className={styles.subtitle}>Remove Expenses</h3>
-        <select
-          value={rexpType}
-          className={styles.dropdown}
-          onChange={(event) => setRExpType(event.target.value)}
-        >
-          <option value="Food">Food</option>
-          <option value="Travel">Travel</option>
-          <option value="Rent">Rent</option>
-          <option value="Groceries">Groceries</option>
-          <option value="Bills">Bills</option>
-          <option value="Others">Others</option>
-        </select>
-        <input
-          type="number"
-          id="rexpAmount"
-          value={rexpAmount}
-          className={styles.input}
-          onChange={(event) => setRExpAmount(event.target.value)}
-          required
-        />
-        <button className={styles.button} onClick={handleSubmitExpense}>
-          Submit
-        </button>
-        <h3 className={styles.subtitle}>Update Expenses</h3>
-        <select
-          value={uexpType}
-          className={styles.dropdown}
-          onChange={(event) => setUExpType(event.target.value)}
-        >
-          <option value="Food">Food</option>
-          <option value="Travel">Travel</option>
-          <option value="Rent">Rent</option>
-          <option value="Groceries">Groceries</option>
-          <option value="Bills">Bills</option>
-          <option value="Others">Others</option>
-        </select>
-        <input
-          type="number"
-          id="uexpAmount"
-          value={uexpAmount}
-          className={styles.input}
-          onChange={(event) => setUExpAmount(event.target.value)}
-          required
         />
         <button className={styles.button} onClick={handleSubmitExpense}>
           Submit

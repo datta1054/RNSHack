@@ -16,22 +16,22 @@ export default function Footer() {
         </div>
 
         <div>
-          <a href="" className="me-4 text-reset">
+          <a href="#" className="me-4 text-reset">
             <MDBIcon fab icon="facebook-f" />
           </a>
-          <a href="" className="me-4 text-reset">
+          <a href="#" className="me-4 text-reset">
             <MDBIcon fab icon="twitter" />
           </a>
-          <a href="" className="me-4 text-reset">
+          <a href="#" className="me-4 text-reset">
             <MDBIcon fab icon="google" />
           </a>
-          <a href="" className="me-4 text-reset">
+          <a href="#" className="me-4 text-reset">
             <MDBIcon fab icon="instagram" />
           </a>
-          <a href="" className="me-4 text-reset">
+          <a href="#" className="me-4 text-reset">
             <MDBIcon fab icon="linkedin" />
           </a>
-          <a href="" className="me-4 text-reset">
+          <a href="#" className="me-4 text-reset">
             <MDBIcon fab icon="github" />
           </a>
         </div>
@@ -43,36 +43,11 @@ export default function Footer() {
             <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">
                 <MDBIcon icon="gem" className="me-3" />
-                Company name
+                Title
               </h6>
               <p>
-                Here you can use rows and columns to organize your footer
-                content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit.
-              </p>
-            </MDBCol>
-
-            <MDBCol md="2" lg="2" xl="2" className="mx-auto mb-4">
-              <h6 className="text-uppercase fw-bold mb-4">Products</h6>
-              <p>
-                <a href="#!" className="text-reset">
-                  Angular
-                </a>
-              </p>
-              <p>
-                <a href="#!" className="text-reset">
-                  React
-                </a>
-              </p>
-              <p>
-                <a href="#!" className="text-reset">
-                  Vue
-                </a>
-              </p>
-              <p>
-                <a href="#!" className="text-reset">
-                  Laravel
-                </a>
+                We will help you to manage the monthly expence and saves money
+                for you!
               </p>
             </MDBCol>
 
@@ -80,41 +55,36 @@ export default function Footer() {
               <h6 className="text-uppercase fw-bold mb-4">Useful links</h6>
               <p>
                 <a href="#!" className="text-reset">
-                  Pricing
+                  Home
                 </a>
               </p>
               <p>
                 <a href="#!" className="text-reset">
-                  Settings
+                  About
                 </a>
               </p>
               <p>
                 <a href="#!" className="text-reset">
-                  Orders
-                </a>
-              </p>
-              <p>
-                <a href="#!" className="text-reset">
-                  Help
+                  Contact
                 </a>
               </p>
             </MDBCol>
 
-            <MDBCol md="4" lg="3" xl="3" className="mx-auto mb-md-0 mb-4">
+            <MDBCol md="4" lg="3" xl="3" className="mx-left mb-md-0 mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
               <p>
                 <MDBIcon icon="home" className="me-2" />
-                New York, NY 10012, US
+                Bangalore Institute of Technology, V.V Puram, Bangalore.
               </p>
               <p>
                 <MDBIcon icon="envelope" className="me-3" />
-                info@example.com
+                https://bit-bangalore.edu.in
               </p>
               <p>
-                <MDBIcon icon="phone" className="me-3" /> + 01 234 567 88
+                <MDBIcon icon="phone" className="me-3" /> + 91 9482197514
               </p>
               <p>
-                <MDBIcon icon="print" className="me-3" /> + 01 234 567 89
+                <MDBIcon icon="print" className="me-3" /> + 91 6361695487
               </p>
             </MDBCol>
           </MDBRow>
@@ -133,3 +103,4 @@ export default function Footer() {
     </MDBFooter>
   );
 }
+  

@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "./Dashboard.module.css";
-import LeftSideBar from "./LeftSideBar";
 import ExpenseCard from "./ExpenseCard";
+import Options from "./Options";
 
 const Dashboard = () => {
   return (
     <div className={styles.container}>
       <div className={styles.grid1}>
-        <LeftSideBar />
+        <Options />
       </div>
       <div className={styles.grid4}>
         <ExpenseCard />

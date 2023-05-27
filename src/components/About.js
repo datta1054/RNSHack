@@ -5,12 +5,13 @@ const About = () => {
     <div className={styles.container}>
       <h1 className={styles.heading}>About Us</h1>
 
-      <p>Welcome to the Finance manager!</p>
+      <p>Track Your Expenses</p>
       <p className={styles.text}>
-        At CalmSoul, we are dedicated to providing high-quality psychiatric
-        therapy services to individuals seeking support and guidance. Our team
-        of experienced and compassionate psychiatrists is committed to helping
-        you improve your mental well-being and lead a fulfilling life.
+        Our platform allows you to effortlessly record and categorize your
+        expenses, whether it's for groceries, bills, entertainment, or any other
+        category. By having a detailed breakdown of your spending, you can
+        better understand where your money is going and make informed decisions
+        about your budget.{" "}
       </p>
       {/* <img
         src="https://images.pexels.com/photos/4101143/pexels-photo-4101143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"

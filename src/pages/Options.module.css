@@ -1,25 +1,37 @@
 .dropdownContainer {
   width: 100%;
+  background: linear-gradient(#ffffff, #9198e5);
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
 }
 
 .dropdowns {
+  border-radius: 2px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
 }
 
 .dropdown {
+  border-radius: 4px;
   padding: 10px;
   font-size: 16px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 
 .button {
   margin-left: 20%;
   margin-right: 20%;
   background-color: #4caf50;
+  border-radius: 2rem;
   border: none;
   color: white;
   padding: 0.2rem 0.2rem;
@@ -28,6 +40,10 @@
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
+  -webkit-border-radius: 2rem;
+  -moz-border-radius: 2rem;
+  -ms-border-radius: 2rem;
+  -o-border-radius: 2rem;
 }
 
 .button:hover {

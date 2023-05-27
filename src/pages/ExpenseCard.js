@@ -18,7 +18,7 @@ function ExpenseCard() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: "s@gmail.com",
+          email: localStorage.getItem("email"),
         }),
       });
       const jsonData = await response.json();

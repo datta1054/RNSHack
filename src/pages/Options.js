@@ -9,7 +9,7 @@ const Options = () => {
   const [BudjetAmount, setBudjetAmount] = useState(0);
   const [BudjetType, setBudjetType] = useState("");
   const navigate = useNavigate();
-  const [income, setIncome] = useState(0);
+  // const [income, setIncome] = useState(0);
   const handleSubmitExpense = async (e) => {
     e.preventDefault();
     const response = await fetch(
@@ -54,6 +54,8 @@ const Options = () => {
   return (
     <div className={styles.dropdownContainer}>
       <div className={styles.dropdowns}>
+        {" "}
+        <h2>Report</h2>
         <h3 className={styles.subtitle}>Expenses</h3>
         <select
           value={expType}
