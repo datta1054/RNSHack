@@ -1,13 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
+import styles from "./Navbar.module.css";
+import { RiMentalHealthLine } from "react-icons/ri";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function toggleMenu() {
+    setIsOpen(!isOpen);
+  }
+  const onButton = () => {};
   return (
-    <div>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laboriosam
-      asperiores, ex accusamus voluptatibus quis nemo blanditiis ut neque, hic
-      fugiat quod. Ducimus reiciendis facere vero sed exercitationem error esse
-      molestiae.
-    </div>
+    <nav className={styles.navbar}>
+      <strong>
+        <div className={styles.logo}>
+          <RiMentalHealthLine />
+          <span>CalmSoul</span>
+        </div>
+      </strong>
+
+      <ul className={`${styles.menu} ${isOpen ? styles.showMenu : ""}`}>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/about">About</NavLink>
+        </li>
+        <li>
+          <NavLink to="/contact">Contact</NavLink>
+        </li>
+        <li>
+          <NavLink to="/login">Login</NavLink>
+        </li>
+        <li>
+          <NavLink to="/signup">Signup</NavLink>
+        </li>
+        <li>
+          <NavLink to="/chat">
+            <button className={styles.button} onClick={onButton}>
+              Chat Now
+            </button>
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
   );
 }
 
