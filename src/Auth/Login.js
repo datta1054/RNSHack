@@ -1,24 +1,50 @@
 import React, { useState } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
 import styles from "./Login.module.css";
 
 function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  let navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const response = await fetch("http://localhost:8000/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+    const json = await response.json();
+    console.log(json);
+
+    if (!json.success) {
+      alert("Enter Valid Credentials");
+    }
+    if (json.success) {
+      localStorage.setItem("authToken", json.authToken);
+      console.log(localStorage.getItem("authToken"));
+      alert("Successfully Logged in");
+      setemail("");
+      setpassword("");
+      navigate("/");
+    }
   };
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleLogin} className={styles.form}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <h2 id={styles.headin}>Login</h2>
         <label className={styles.label}>
-          Username: &emsp;
+          Email: &emsp;
           <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            type="email"
+            value={email}
+            onChange={(e) => setemail(e.target.value)}
             className={styles.input}
             required
           />
@@ -28,15 +54,17 @@ function Login() {
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setpassword(e.target.value)}
             className={styles.input}
             required
           />
         </label>
-        <button type="submit" className={styles.button}>
+        <button type="submit" onSubmit={handleSubmit} className={styles.button}>
           Submit
         </button>
-        <p className={styles.forgot}>Forgot Password?</p>
+        <NavLink to="/forgot" className={styles.forgot}>
+          Forgot Password?
+        </NavLink>
       </form>
     </div>
   );
