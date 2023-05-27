@@ -1,9 +1,9 @@
 import express from "express";
-import { loginUser, registerUser } from "../controllers/auth.js";
+import { getAllExpenses, addExpense } from "../controllers/expenses.js";
 
 const router = express.Router();
-router.post("/", registerUser);
-router.post("/login", loginUser);
+router.post("/", getAllExpenses);
+router.post("/add", addExpense);
 // need to put a middle ware
 // router.get("/me", protect, getMe);
 export default router;
