@@ -5,7 +5,7 @@ import asyncHandler from "express-async-handler";
 import { v4 as uuidv4 } from "uuid";
 
 //imports
-import { pool } from "./utils/connectDb.js";
+import { pool } from "../utils/connectDb.js";
 
 //supporting functions
 const generateTokenAuth = (id) => {
@@ -39,15 +39,13 @@ export const registerUser = asyncHandler(async (req, res) => {
       const salt = bcrypt.genSaltSync(10);
       const hash = bcrypt.hashSync(req.body.password, salt);
       q =
-        "insert into users(displayName,email,password,phone,photoURL,ExpenseNumberID,IncomeNumberID) values (?)";
+        "insert into users(displayName,email,password,phone,photoURL) values (?)";
       const values = [
         req.body.displayName,
         req.body.email,
         hash,
         req.body.phone,
         req.body.photoURL,
-        uuidv4(),
-        uuidv4(),
       ];
       console.log(values);
       db.query(q, [values], (err, data) => {
