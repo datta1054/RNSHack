@@ -1,9 +1,14 @@
 import express from "express";
-import { getAllExpenses, addExpense } from "../controllers/expenses.js";
+import {
+  getAllExpenses,
+  addExpense,
+  deleteExpense,
+  updateExpense,
+} from "../controllers/expenses.js";
 
 const router = express.Router();
-router.post("/", getAllExpenses);
+router.get("/", getAllExpenses);
 router.post("/add", addExpense);
-// need to put a middle ware
-// router.get("/me", protect, getMe);
+router.delete("/delete/", deleteExpense);
+router.patch("/update/", updateExpense);
 export default router;

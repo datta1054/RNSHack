@@ -4,8 +4,8 @@ import { v4 as uuidv4 } from "uuid";
 
 //imports
 import { pool } from "../utils/connectDb.js";
-//POST /api/users/expenses/add
-export const addExpense = asyncHandler(async (req, res) => {
+//POST /api/users/incomes/add
+export const addIncome = asyncHandler(async (req, res) => {
   const user_email = req.body.email;
   if (!user_email) {
     throw new Error("Please Enter All The Details");
@@ -29,11 +29,11 @@ export const addExpense = asyncHandler(async (req, res) => {
         date = new Date().toISOString().slice(0, 10);
       }
       q =
-        "insert into expenses(ExpenseNumberID,amount,category,curr_date,user_email) values (?)";
+        "insert into incomes(IncomeNumberId,income,description,date,user_email) values (?)";
       const values = [
         uuidv4(),
-        req.body.amount,
-        req.body.category,
+        req.body.income,
+        req.body.description,
         date,
         user_email,
       ];
@@ -43,15 +43,15 @@ export const addExpense = asyncHandler(async (req, res) => {
           return res.json({ err });
         }
         db.release();
-        res.status(200).json({ success: "added expense" });
+        res.status(200).json({ success: "added income" });
       });
     });
   });
 });
 
-//GET /api/users/expenses
+//GET /api/users/incomes
 
-export const getAllExpenses = asyncHandler(async (req, res) => {
+export const getAllIncomes = asyncHandler(async (req, res) => {
   const user_email = req.body.email;
   if (!user_email) {
     throw new Error("Please Enter All The Details");
@@ -71,7 +71,7 @@ export const getAllExpenses = asyncHandler(async (req, res) => {
           .json("Email hasn't register Please register first");
       }
 
-      q = "select * from expenses where user_email = ?";
+      q = "select * from incomes where user_email = ?";
 
       db.query(q, [user_email], (err, data) => {
         if (err) {
@@ -85,16 +85,16 @@ export const getAllExpenses = asyncHandler(async (req, res) => {
   });
 });
 
-// DELETE /api/users/expenses/delete
-export const deleteExpense = asyncHandler(async (req, res) => {
-  const ExpenseNumberID = req.body.ExpenseNumberID;
-  if (!ExpenseNumberID) {
+// DELETE /api/users/incomes/delete
+export const deleteIncome = asyncHandler(async (req, res) => {
+  const IncomeNumberId = req.body.IncomeNumberId;
+  if (!IncomeNumberId) {
     throw new Error("Please enter which particular expense need to be deleted");
   }
-  let q = `DELETE FROM expenses WHERE ExpenseNumberID = ?;
+  let q = `DELETE FROM incomes WHERE IncomeNumberId = ?;
 `;
   pool.getConnection(function (err, db) {
-    db.query(q, [ExpenseNumberID], (err, data) => {
+    db.query(q, [IncomeNumberId], (err, data) => {
       if (err) {
         db.release();
         console.log(err);
@@ -102,24 +102,24 @@ export const deleteExpense = asyncHandler(async (req, res) => {
       }
       if (data.length === 0) {
         db.release();
-        return res.status(404).json("ExpenseNumberID not found ");
+        return res.status(404).json("IncomeNumberId not found ");
       }
       db.release();
-      res.status(200).json({ success: "deleted an expense" });
+      res.status(200).json({ success: "deleted an income" });
     });
   });
 });
 
-// PATCH /api/users/expenses/update
-export const updateExpense = asyncHandler(async (req, res) => {
-  const ExpenseNumberID = req.body.ExpenseNumberID;
-  const amount = req.body.amount;
-  if (!ExpenseNumberID) {
+// PATCH /api/users/incomes/update
+export const updateIncome = asyncHandler(async (req, res) => {
+  const IncomeNumberId = req.body.IncomeNumberId;
+  const income = req.body.income;
+  if (!IncomeNumberId) {
     throw new Error("Please enter which particular expense need to be deleted");
   }
-  let q = `UPDATE expenses SET amount = ? WHERE ExpenseNumberID = ?;`;
+  let q = `UPDATE incomes SET income = ? WHERE IncomeNumberId = ?;`;
   pool.getConnection(function (err, db) {
-    db.query(q, [amount, ExpenseNumberID], (err, data) => {
+    db.query(q, [income, IncomeNumberId], (err, data) => {
       if (err) {
         db.release();
         console.log(err);
@@ -127,10 +127,10 @@ export const updateExpense = asyncHandler(async (req, res) => {
       }
       if (data.length === 0) {
         db.release();
-        return res.status(404).json("ExpenseNumberID not found ");
+        return res.status(404).json("IncomeNumberId not found ");
       }
       db.release();
-      res.status(200).json({ success: "updated an expense" });
+      res.status(200).json({ success: "updated an income" });
     });
   });
 });
