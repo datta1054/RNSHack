@@ -1,11 +1,15 @@
 import express from "express";
+import cors from "cors";
 import userRoutes from "./Routes/userRoutes.js";
 import expensesRoutes from "./Routes/expensesRoute.js";
 import incomesRoutes from "./Routes/incomeRoute.js";
 
 const app = express();
 const port = 3001;
+
 app.use(express.json());
+app.use(cors());
+
 app.get("/", (req, res) => {
   res.send("Hello, Express server!");
 });
