@@ -1,7 +1,7 @@
 import React from "react";
 
-function Card() {
+function Forgot() {
   return <div></div>;
 }
 
-export default Card;
+export default Forgot;

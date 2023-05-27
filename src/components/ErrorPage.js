@@ -1,7 +1,7 @@
 import React from "react";
 
-function Card() {
+function ErrorPage() {
   return <div></div>;
 }
 
-export default Card;
+export default ErrorPage;
