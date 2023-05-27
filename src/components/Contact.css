@@ -1,0 +1,28 @@
+.contact-container {
+  background-color: #f2f2f2;
+  padding: 2rem;
+}
+
+.contact-header {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  margin: 0 2rem;
+}
+
+.icon {
+  font-size: 2rem;
+  color: black;
+  margin-right: 1rem;
+}

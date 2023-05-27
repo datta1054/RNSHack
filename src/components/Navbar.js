@@ -35,13 +35,13 @@ function Navbar() {
         <li>
           <NavLink to="/signup">Signup</NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/chat">
             <button className={styles.button} onClick={onButton}>
               Chat Now
             </button>
           </NavLink>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
