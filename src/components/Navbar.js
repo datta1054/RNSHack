@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Navbar.module.css";
-import { RiMentalHealthLine } from "react-icons/ri";
+import { TbReportMoney } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
@@ -14,7 +14,7 @@ function Navbar() {
     <nav className={styles.navbar}>
       <strong>
         <div className={styles.logo}>
-          <RiMentalHealthLine />
+          <TbReportMoney />
           <span>Expenser</span>
         </div>
       </strong>

@@ -11,9 +11,7 @@ const Dashboard = () => {
         <Options />
       </div>
 
-      <div className={styles.grid2}>
-        <Card />
-      </div>
+     
       <div className={styles.grid4}>
         <ExpenseCard />
       </div>

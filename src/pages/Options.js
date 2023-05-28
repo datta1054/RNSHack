@@ -89,7 +89,7 @@ const Options = () => {
   return (
     <div className={styles.dropdownContainer}>
       <div className={styles.dropdowns}>
-        <button onClick={pdfGenerate}>
+        <button onClick={pdfGenerate} className={styles.butto}>
           <h2>Report</h2>
         </button>
 

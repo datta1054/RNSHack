@@ -18,36 +18,19 @@ const About = () => {
         alt=""
       /> */}
       <p className={styles.text}>
-        Using the power of React.js, we have created an interactive and
-        user-friendly platform that allows you to easily access our services and
-        connect with our professional therapists. Here, we combine cutting-edge
-        technology with evidence-based therapeutic approaches to deliver
-        personalized and effective treatment.
+        Simplify the budget tracking process with our seamless integration with
+        financial institutions. Our platform securely connects to your bank
+        accounts, credit cards, and other financial accounts, automatically
+        importing your transactions and eliminating the need for manual data
+        entry. This saves you time and ensures accurate and up-to-date financial
+        information
       </p>
       <h2>Our Approach</h2>
       <p className={styles.text}>
-        At CalmSoul, we believe in a holistic approach to mental health. We
-        understand that each individual is unique, and we strive to provide
-        personalized treatment plans tailored to your specific needs. Our
-        psychiatrists employ a range of therapeutic techniques, including
-        cognitive-behavioral therapy (CBT), psychodynamic therapy,
-        mindfulness-based practices, and medication management when necessary.
-      </p>
-      <h2>Our Services</h2>
-      <p className={styles.text}>
-        We offer a comprehensive range of services to address various mental
-        health concerns, including but not limited to:
-      </p>
-      <ul>
-        <li>Individual Therapy</li>
-        <li>Medication Management</li>
-        <li>Teletherapy</li>
-        <li>Group Therapy</li>
-      </ul>
-      <p className={styles.text}>
-        In addition to the above services, we also provide workshops,
-        educational resources, and support programs to promote mental wellness
-        and self-care.
+        We prioritize the security and privacy of your financial information.
+        Our platform employs robust encryption and follows industry best
+        practices to ensure that your data is safe and confidential. You can
+        trust that your sensitive information is protected at all times.
       </p>
     </div>
   );

@@ -57,3 +57,9 @@
 .button:active {
   background-color: #3e8e41;
 }
+.butto {
+  border: 5px sold rgb(86, 252, 111);
+  border-radius: 1rem;
+  background: hsl(323, 100%, 88%);
+  color: aqua;
+}

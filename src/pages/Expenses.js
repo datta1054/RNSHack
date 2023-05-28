@@ -52,7 +52,7 @@ function Expenses() {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  }; 
+  };
   return (
     <div className={styles.dropdownContainer}>
       <ExpencesCard data={data} />
@@ -63,6 +63,7 @@ function Expenses() {
           className={styles.dropdown}
           onChange={(event) => setExpType(event.target.value)}
         >
+          <option value="">Select</option>
           <option value="Food">Food</option>
           <option value="Travel">Travel</option>
           <option value="Rent">Rent</option>
