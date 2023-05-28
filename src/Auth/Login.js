@@ -61,6 +61,13 @@ function Login() {
         <button type="submit" onSubmit={handleSubmit} className={styles.button}>
           Submit
         </button>
+        <p>
+          Are You a New here?{" "}
+          <NavLink to="/signin">
+            <strong> Sign in</strong>
+          </NavLink>
+        </p>
+
         <NavLink to="/forgot">Forgot password</NavLink>
       </form>
     </div>

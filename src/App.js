@@ -1,5 +1,5 @@
 import React from "react";
-// import "./App.css";
+import "./App.css";
 // import "bootstrap/dist/css/bootstrap.min.css"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
@@ -19,8 +19,8 @@ import Budgets from "./pages/Budgets";
 function App() {
   return (
     <Router>
-      <div className="container">
-        <Navbar />
+      <div className="App">
+        <div><Navbar />
         <Routes>
           <Route path="/" Component={Home} />
           <Route path="/about" Component={About} />
@@ -34,7 +34,8 @@ function App() {
           <Route path="/Newpassword" Component={Newpassword} /> */}
           <Route path="*" Component={ErrorPage} />
         </Routes>
-        <Footer />
+        <Footer /></div>
+        
       </div>
     </Router>
   );

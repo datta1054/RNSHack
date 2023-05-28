@@ -14,7 +14,7 @@ function Budjets() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: "guru@gmail.com",
+        email: localStorage.getItem("email"),
         Budjet: BudjetAmount,
         description: BudjetType,
       }),
@@ -33,12 +33,12 @@ function Budjets() {
           onChange={(event) => setBudjetType(event.target.value)}
         >
           <option value="">Select</option>
-          <option value="option6">Food</option>
-          <option value="option7">Travel</option>
-          <option value="option8">Rent</option>
-          <option value="option9">Groceries</option>
-          <option value="option10">Bills</option>
-          <option value="option11">Others</option>
+          <option value="Food">Food</option>
+          <option value="Travel">Travel</option>
+          <option value="Rent">Rent</option>
+          <option value="Groceries">Groceries</option>
+          <option value="Bills">Bills</option>
+          <option value="Others">Others</option>
         </select>
         <input
           type="number"

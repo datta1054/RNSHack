@@ -17,7 +17,7 @@ const LineChart = (props) => {
       labels: labels,
       datasets: [
         {
-          label: "My First Dataset",
+          label: "Line Chart for Expenses",
           data: props.data,
           fill: false,
           borderColor: "rgb(75, 192, 192)",

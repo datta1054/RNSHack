@@ -12,7 +12,7 @@ const PieChart = (props) => {
       labels: ["Food", "Travel", "Rent", "Groceries", "Bills", "Others"],
       datasets: [
         {
-          label: "My First Dataset",
+          label: "Pie Chart For Expenses",
           data: props.data,
           backgroundColor: [
             "rgb(235, 107, 52)",

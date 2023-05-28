@@ -15,7 +15,7 @@ function Navbar() {
       <strong>
         <div className={styles.logo}>
           <RiMentalHealthLine />
-          <span>Title</span>
+          <span>Expenser</span>
         </div>
       </strong>
 
@@ -38,9 +38,9 @@ function Navbar() {
         <li>
           <NavLink to="/expenses">Expenses</NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/budgets">Budgets</NavLink>
-        </li>
+        </li> */}
         {/* <li> 
           <NavLink to="/chat">
             <button className={styles.button} onClick={onButton}>

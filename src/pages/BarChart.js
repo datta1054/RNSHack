@@ -15,11 +15,11 @@ const BarChart = (props) => {
       labels: labels,
       datasets: [
         {
-          label: "My First Dataset",
+          label: "Bar Chart For ExpensesF",
           data: props.data,
           backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
+            " rgb(17, 0, 255)",
+            "rgb(255, 0, 0)",
             "rgba(255, 205, 86, 0.2)",
             "rgba(75, 192, 192, 0.2)",
             "rgba(54, 162, 235, 0.2)",
@@ -27,7 +27,7 @@ const BarChart = (props) => {
             "rgba(201, 203, 207, 0.2)",
           ],
           borderColor: [
-            "rgb(255, 99, 132)",
+            " rgb(255, 255, 255)",
             "rgb(255, 159, 64)",
             "rgb(255, 205, 86)",
             "rgb(75, 192, 192)",

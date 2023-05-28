@@ -7,9 +7,14 @@
   background-color: #e6e6e6;
   padding: 10px;
 }
+.grid2 {
+  flex: 2;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
 
 .grid4 {
-  flex: 4;
+  flex: 3;
   background-color: #f2f2f2;
   padding: 0.6rem;
 }

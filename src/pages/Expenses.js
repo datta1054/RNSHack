@@ -3,7 +3,7 @@ import styles from "./Options.module.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ExpencesCard from "./ExpencesCard";
-
+import LineChart from "./LineChart";
 function Expenses() {
   const [expAmount, setExpAmount] = useState(0);
   const [expType, setExpType] = useState("");
@@ -43,7 +43,7 @@ function Expenses() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: "s@gmail.com",
+          email: localStorage.getItem("email"),
         }),
       });
       const jsonData = await response.json();
@@ -52,11 +52,10 @@ function Expenses() {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
+  }; 
   return (
     <div className={styles.dropdownContainer}>
       <ExpencesCard data={data} />
-
       <div className={styles.dropdowns}>
         <h3 className={styles.subtitle}>Add Expenses</h3>
         <select

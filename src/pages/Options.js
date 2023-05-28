@@ -9,7 +9,7 @@ const Options = () => {
   const [BudjetAmount, setBudjetAmount] = useState(0);
   const [BudjetType, setBudjetType] = useState("");
   const navigate = useNavigate();
-  // const [income, setIncome] = useState(0);
+  const [income, setIncome] = useState(0);
   const handleSubmitExpense = async (e) => {
     e.preventDefault();
     const response = await fetch(
@@ -20,7 +20,7 @@ const Options = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: "s@gmail.com",
+          email: localStorage.getItem("email"),
           amount: expAmount,
           category: expType,
           date: expDate,
@@ -50,12 +50,49 @@ const Options = () => {
     const json = await response.json();
     console.log(json);
   };
+  const handleSubmitIncome = async (e) => {
+    e.preventDefault();
+    const response = await fetch(
+      "http://localhost:8000/api/users/incomes/add",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: "s@gmail.com",
+          income: income,
+        }),
+      }
+    );
+    const json = await response.json();
+    console.log(json);
+    setIncome(0);
+  };
 
+  const pdfGenerate = async () => {
+    const response = await fetch("http://localhost:8000/api/users/report", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: localStorage.getItem("email"),
+      }),
+    });
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+
+    // Open the file in a new tab
+    window.open(url, "_blank");
+  };
   return (
     <div className={styles.dropdownContainer}>
       <div className={styles.dropdowns}>
-        {" "}
-        <h2>Report</h2>
+        <button onClick={pdfGenerate}>
+          <h2>Report</h2>
+        </button>
+
         <h3 className={styles.subtitle}>Expenses</h3>
         <select
           value={expType}
@@ -115,13 +152,13 @@ const Options = () => {
         <h2> Total Salary per Month</h2>
         <input
           type="number"
-          id="expAmount"
-          value={BudjetAmount}
+          id="income"
+          value={income}
           className={styles.input}
-          onChange={(event) => setBudjetAmount(event.target.value)}
+          onChange={(event) => setIncome(event.target.value)}
           required
         />
-        <button className={styles.button} onClick={handleSubmitBudjet}>
+        <button className={styles.button} onClick={handleSubmitIncome}>
           Submit
         </button>
       </div>
