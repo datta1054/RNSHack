@@ -5,6 +5,10 @@ import asyncHandler from "express-async-handler";
 import Mailjet from 'node-mailjet'
 import CryptoJS from 'crypto-js';
 import { v4 as uuidv4 } from "uuid";
+import PDFDocument from 'pdfkit'
+import fs from 'fs'
+import path from 'path'
+
 
 const P_APIKEY = 'b410e3a463611f3f309c8780d23e3a74'
 const S_APIKEY = '9cbfb22d92691595328e6c8d76637472'
@@ -193,7 +197,58 @@ export const updatePassword = asyncHandler(async (req, res) => {
         })
       })
     });
-  }else {
+  } else {
     return res.status(201).json("OTP doesn't match!!")
   }
 });
+
+export const reportPdf = (req, res) => {
+  const user_email = req.body.email
+  if (!email) {
+    return res.status(400).json("Need to login !!")
+  }
+  let currentDate = new Date().toJSON().slice(0, 10);
+  const reportName = 'Report-' + currentDate + '.pdf'
+  console.log(reportName)
+
+  let totalExpense = 0, totalIncome = 0, totalBudget = 0;
+  // Write total income
+  let q = `select sum(income) as income_amt from incomes where user_email = ?`;
+  pool.getConnection(function (err, db) {
+    if (err) return res.json(err);
+    db.query(q, [user_email], (err, data) => {
+      if (err) {
+        db.release();
+        return res.json({ err });
+      }
+      totalIncome = data[0]['income_amt']
+      q = `select sum(amount) as expense_amt from expenses where user_email = ?`;
+      pool.getConnection(async function (err, db) {
+        if (err) return res.json(err);
+        db.query(q, [user_email], (err, data) => {
+          if (err) {
+            db.release()
+            return res.json({ err });
+          }
+          totalExpense = data[0]['expense_amt']
+          const invoicePath = path.join('utils', 'reports', reportName)
+          const pdfDoc = new PDFDocument()
+          pdfDoc.pipe(fs.createWriteStream(invoicePath))
+          res.setHeader('Content-Type', 'application/pdf')
+          res.setHeader('Content-Disposition', 'inline; filename="' + reportName + '"')
+          pdfDoc.fontSize(26).text('Budget Tracker', { underline: true, align: 'center' })
+          pdfDoc.pipe(res)
+          pdfDoc.fontSize(26).text('Report', { underline: true })
+          pdfDoc.text('---------------------------------------------------')
+
+          console.log(totalExpense + ", " + totalIncome)
+          pdfDoc.fontSize(22).text('Total Income : ' + '$' + totalIncome)
+          pdfDoc.fontSize(22).text('Total Expense : ' + '$' + totalExpense)
+          pdfDoc.text('-------------------------------------------------------------------')
+          pdfDoc.fontSize(24).text('Total Savings :  ' + '$' + (totalIncome - totalExpense))
+          pdfDoc.end()
+        });
+      })
+    });
+  })
+} 

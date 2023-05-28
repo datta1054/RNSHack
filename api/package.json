@@ -12,16 +12,14 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-<<<<<<< HEAD
-    "crypto-js": "^4.1.1",
-=======
     "cors": "^2.8.5",
->>>>>>> 424699f29a9d07cced5f8328014cc0d1a1e823cb
+    "crypto-js": "^4.1.1",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.0",
     "mysql": "^2.18.1",
     "node-mailjet": "^6.0.2",
+    "pdfkit": "^0.13.0",
     "uuid": "^9.0.0"
   }
 }
